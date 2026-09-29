@@ -1,24 +1,301 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Crowd Vision .AI</title>
+
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'dashboard_app/css/dashboard.css' %}">
 </head>
 
 <body>
 
-    <h1>CROWD VISION .AI</h1>
+  
+<!-- CINEMATIC INTRO -->
+<div id="intro">
 
-    <h2>AI-Powered Crowd Intelligence Dashboard</h2>
+    <!-- Ambient atmosphere -->
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+    <div class="ambient ambient-three"></div>
 
-    <hr>
+    <!-- Greeting -->
+    <div class="greeting-screen">
 
-    <h3>System Status: ONLINE</h3>
+<div class="namaste-glow">
+    <img
+        src="{% static 'dashboard_app/images/crowd_vision_greeting.png' %}"
+        alt="Welcome"
+    >
+</div>
+        <p class="greeting-title">WELCOME</p>
 
-    <p>Computer Vision: READY</p>
-    <p>YOLO Detection: READY</p>
-    <p>Crowd Analytics: READY</p>
-    <p>Anomaly Detection: READY</p>
-    <p>XYRO: STANDBY</p>
+        <p class="greeting-subtitle">
+            INTELLIGENT CROWD SYSTEM
+        </p>
+
+    </div>
+
+
+    <!-- Existing Crowd Vision intro -->
+    <div class="intro-content">
+
+        <div class="intro-line"></div>
+
+        <p class="intro-small">
+            INTELLIGENT CROWD SYSTEM
+        </p>
+
+        <h1>
+            CROWD VISION <span>.AI</span>
+        </h1>
+
+        <p class="intro-status">
+            INITIALIZING VISION ENGINE...
+        </p>
+
+    </div>
+
+</div>
+
+
+
+
+    <!-- MAIN APPLICATION -->
+
+    <div id="app">
+
+        <aside class="sidebar">
+
+            <div class="brand">
+                <div class="brand-dot"></div>
+
+                <div>
+                    <h2>CROWD VISION<span>.AI</span></h2>
+                    <p>INTELLIGENCE SYSTEM</p>
+                </div>
+            </div>
+
+
+            <nav>
+
+                <a class="nav-item active">
+                    <span>◉</span>
+                    Dashboard
+                </a>
+
+                <a class="nav-item">
+                    <span>◌</span>
+                    Live Monitoring
+                </a>
+
+                <a class="nav-item">
+                    <span>◈</span>
+                    Analytics
+                </a>
+
+                <a class="nav-item">
+                    <span>⌁</span>
+                    Predictions
+                </a>
+
+                <a class="nav-item">
+                    <span>◇</span>
+                    Digital Twin
+                </a>
+
+                <a class="nav-item">
+                    <span>△</span>
+                    Simulation
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <div class="xyro-mini">
+                    <div class="xyro-orb"></div>
+
+                    <div>
+                        <strong>XYRO</strong>
+                        <small>AI ASSISTANT</small>
+                    </div>
+
+                    <span class="online-dot"></span>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <main class="main">
+
+            <header class="topbar">
+
+                <div>
+                    <p class="eyebrow">COMMAND CENTER</p>
+                    <h1>Good evening, <span>Operator.</span></h1>
+                </div>
+
+                <div class="system-status">
+                    <span></span>
+                    SYSTEM ONLINE
+                </div>
+
+            </header>
+
+
+            <section class="hero">
+
+                <div class="hero-info">
+
+                    <p class="eyebrow">LIVE INTELLIGENCE</p>
+
+                    <h2>
+                        Understanding the crowd.
+                        <br>
+                        <span>Before it becomes a problem.</span>
+                    </h2>
+
+                    <p class="hero-description">
+                        Crowd Vision .AI continuously observes,
+                        analyzes and predicts crowd behavior in real time.
+                    </p>
+
+                </div>
+
+
+                <div class="hero-orb">
+
+                    <div class="orb-ring ring-one"></div>
+                    <div class="orb-ring ring-two"></div>
+                    <div class="orb-core"></div>
+
+                    <span>VISION<br>ACTIVE</span>
+
+                </div>
+
+            </section>
+
+
+            <section class="metrics">
+
+                <div class="glass-card">
+                    <p>PEOPLE DETECTED</p>
+                    <strong>--</strong>
+                    <span>LIVE COUNT</span>
+                </div>
+
+                <div class="glass-card">
+                    <p>CROWD DENSITY</p>
+                    <strong>--</strong>
+                    <span>ANALYZING</span>
+                </div>
+
+                <div class="glass-card">
+                    <p>CURRENT RISK</p>
+                    <strong>--</strong>
+                    <span>RISK ENGINE</span>
+                </div>
+
+                <div class="glass-card">
+                    <p>ANOMALIES</p>
+                    <strong>--</strong>
+                    <span>AI MONITORING</span>
+                </div>
+
+            </section>
+
+
+            <section class="monitor-grid">
+
+                <div class="glass-panel camera-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <p class="eyebrow">VISION FEED</p>
+                            <h3>Live Monitoring</h3>
+                        </div>
+
+                        <div class="live-indicator">
+                            <span></span>
+                            LIVE
+                        </div>
+
+                    </div>
+
+
+                    <div class="camera-placeholder">
+
+                        <div class="scan-line"></div>
+
+                        <div class="camera-center">
+                            <div class="camera-icon">◉</div>
+                            <p>CAMERA FEED</p>
+                            <small>WAITING FOR VISION ENGINE</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="glass-panel xyro-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <p class="eyebrow">ARTIFICIAL INTELLIGENCE</p>
+                            <h3>XYRO</h3>
+                        </div>
+
+                        <div class="xyro-status">
+                            STANDBY
+                        </div>
+
+                    </div>
+
+
+                    <div class="xyro-main">
+
+                        <div class="xyro-big-orb">
+                            <div></div>
+                        </div>
+
+                        <p class="xyro-message">
+                            Waiting for system data...
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script>
+
+        window.addEventListener("load", () => {
+
+            setTimeout(() => {
+                document.body.classList.add("system-ready");
+            }, 3200);
+
+        });
+
+    </script>
 
 </body>
 </html>
+

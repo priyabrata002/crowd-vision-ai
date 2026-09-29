@@ -1,0 +1,1614 @@
+```css
+/* =========================================================
+   CROWD VISION .AI
+   CINEMATIC GLASS INTERFACE
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+    --bg: #050608;
+    --panel: rgba(255, 255, 255, 0.045);
+    --border: rgba(255, 255, 255, 0.09);
+    --text: #f1f3f5;
+    --muted: #858b95;
+    --accent: #66f6c5;
+    --accent-soft: rgba(102, 246, 197, 0.15);
+}
+
+
+body {
+    background:
+        radial-gradient(circle at 70% 10%, rgba(66, 130, 110, 0.12), transparent 28%),
+        radial-gradient(circle at 10% 90%, rgba(65, 85, 130, 0.10), transparent 30%),
+        var(--bg);
+
+    color: var(--text);
+
+    font-family: "Inter", sans-serif;
+
+    min-height: 100vh;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   CINEMATIC INTRO
+   ========================================================= */
+
+#intro {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #020304;
+
+    transition:
+        opacity 1.2s ease,
+        visibility 1.2s ease;
+}
+
+
+.system-ready #intro {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+}
+
+
+.intro-glow {
+
+    position: absolute;
+
+    width: 500px;
+
+    height: 500px;
+
+    border-radius: 50%;
+
+    background: rgba(102, 246, 197, 0.08);
+
+    filter: blur(100px);
+
+    animation: introGlow 4s infinite alternate;
+}
+
+
+@keyframes introGlow {
+
+    from {
+        transform: scale(0.7);
+        opacity: 0.4;
+    }
+
+    to {
+        transform: scale(1.2);
+        opacity: 0.9;
+    }
+
+}
+
+
+.intro-content {
+
+    position: relative;
+
+    text-align: center;
+
+    animation: introAppear 2s ease forwards;
+}
+
+
+@keyframes introAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+.intro-line {
+
+    width: 70px;
+
+    height: 2px;
+
+    margin: 0 auto 25px;
+
+    background: var(--accent);
+
+    box-shadow:
+        0 0 15px var(--accent),
+        0 0 35px var(--accent);
+
+}
+
+
+.intro-small {
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 18px;
+}
+
+
+.intro-content h1 {
+
+    font-size: clamp(42px, 6vw, 80px);
+
+    font-weight: 600;
+
+    letter-spacing: -3px;
+
+}
+
+
+.intro-content h1 span {
+
+    color: var(--accent);
+
+}
+
+
+.intro-status {
+
+    margin-top: 25px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    animation: statusBlink 1.5s infinite;
+}
+
+
+@keyframes statusBlink {
+
+    50% {
+        opacity: 0.3;
+    }
+
+}
+
+
+/* =========================================================
+   MAIN APPLICATION
+   ========================================================= */
+
+#app {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    opacity: 0;
+
+    transform: scale(0.98);
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease;
+}
+
+
+.system-ready #app {
+
+    opacity: 1;
+
+    transform: scale(1);
+
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.sidebar {
+
+    width: 260px;
+
+    min-height: 100vh;
+
+    padding: 28px 20px;
+
+    border-right: 1px solid var(--border);
+
+    background: rgba(5, 6, 8, 0.72);
+
+    backdrop-filter: blur(25px);
+
+    -webkit-backdrop-filter: blur(25px);
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 5px 8px 35px;
+}
+
+
+.brand-dot {
+
+    width: 10px;
+
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: var(--accent);
+
+    box-shadow:
+        0 0 10px var(--accent),
+        0 0 25px rgba(102, 246, 197, 0.5);
+}
+
+
+.brand h2 {
+
+    font-size: 14px;
+
+    letter-spacing: 1px;
+
+}
+
+
+.brand h2 span {
+
+    color: var(--accent);
+
+}
+
+
+.brand p {
+
+    margin-top: 4px;
+
+    font-size: 8px;
+
+    color: var(--muted);
+
+    letter-spacing: 2px;
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+nav {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+.nav-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 13px 14px;
+
+    border-radius: 12px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    text-decoration: none;
+
+    transition: 0.3s;
+
+    cursor: pointer;
+}
+
+
+.nav-item span {
+
+    width: 20px;
+
+    text-align: center;
+
+    font-size: 15px;
+}
+
+
+.nav-item:hover {
+
+    color: var(--text);
+
+    background: rgba(255, 255, 255, 0.04);
+
+}
+
+
+.nav-item.active {
+
+    color: var(--text);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(102, 246, 197, 0.12),
+            transparent
+        );
+
+    border-left: 2px solid var(--accent);
+
+}
+
+
+.sidebar-bottom {
+
+    margin-top: auto;
+}
+
+
+/* =========================================================
+   XYRO MINI
+   ========================================================= */
+
+.xyro-mini {
+
+    padding: 13px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 15px;
+
+    background: rgba(255,255,255,0.025);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.xyro-orb {
+
+    width: 30px;
+
+    height: 30px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            var(--accent),
+            rgba(102,246,197,0.15) 45%,
+            transparent 70%
+        );
+
+    box-shadow: 0 0 20px rgba(102,246,197,0.3);
+}
+
+
+.xyro-mini strong {
+
+    display: block;
+
+    font-size: 11px;
+}
+
+
+.xyro-mini small {
+
+    color: var(--muted);
+
+    font-size: 7px;
+
+    letter-spacing: 1px;
+}
+
+
+.online-dot {
+
+    margin-left: auto;
+
+    width: 6px;
+
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: var(--accent);
+
+    box-shadow: 0 0 8px var(--accent);
+}
+
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.main {
+
+    flex: 1;
+
+    padding: 35px 42px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   TOP BAR
+   ========================================================= */
+
+.topbar {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 35px;
+}
+
+
+.eyebrow {
+
+    font-size: 9px;
+
+    color: var(--muted);
+
+    letter-spacing: 3px;
+
+    margin-bottom: 8px;
+}
+
+
+.topbar h1 {
+
+    font-size: 25px;
+
+    font-weight: 400;
+}
+
+
+.topbar h1 span {
+
+    color: var(--muted);
+}
+
+
+.system-status {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 9px 13px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 30px;
+
+    color: var(--muted);
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+
+    background: rgba(255,255,255,0.025);
+}
+
+
+.system-status span {
+
+    width: 6px;
+
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: var(--accent);
+
+    box-shadow: 0 0 10px var(--accent);
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+
+    position: relative;
+
+    min-height: 260px;
+
+    padding: 40px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 25px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255,255,255,0.055),
+            rgba(255,255,255,0.015)
+        );
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
+
+    display: flex;
+
+    align-items: center;
+}
+
+
+.hero-info {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 600px;
+}
+
+
+.hero h2 {
+
+    font-size: clamp(30px, 3vw, 48px);
+
+    line-height: 1.1;
+
+    font-weight: 400;
+
+    letter-spacing: -2px;
+}
+
+
+.hero h2 span {
+
+    color: var(--muted);
+}
+
+
+.hero-description {
+
+    margin-top: 20px;
+
+    max-width: 470px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   HERO ORB
+   ========================================================= */
+
+.hero-orb {
+
+    position: absolute;
+
+    right: 9%;
+
+    width: 180px;
+
+    height: 180px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.orb-core {
+
+    width: 65px;
+
+    height: 65px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            white 0%,
+            var(--accent) 20%,
+            rgba(102,246,197,0.25) 55%,
+            transparent 70%
+        );
+
+    box-shadow:
+        0 0 25px var(--accent),
+        0 0 70px rgba(102,246,197,0.25);
+
+    animation: corePulse 3s infinite;
+}
+
+
+@keyframes corePulse {
+
+    50% {
+        transform: scale(1.15);
+    }
+
+}
+
+
+.orb-ring {
+
+    position: absolute;
+
+    border: 1px solid rgba(102,246,197,0.25);
+
+    border-radius: 50%;
+
+    animation: rotateRing 8s linear infinite;
+}
+
+
+.ring-one {
+
+    width: 120px;
+
+    height: 120px;
+}
+
+
+.ring-two {
+
+    width: 175px;
+
+    height: 175px;
+
+    animation-duration: 13s;
+
+    animation-direction: reverse;
+}
+
+
+@keyframes rotateRing {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+.hero-orb span {
+
+    position: absolute;
+
+    font-size: 7px;
+
+    text-align: center;
+
+    letter-spacing: 2px;
+
+    color: white;
+
+    opacity: 0.8;
+}
+
+
+/* =========================================================
+   METRICS
+   ========================================================= */
+
+.metrics {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin-top: 15px;
+}
+
+
+.glass-card {
+
+    padding: 22px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    background: var(--panel);
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
+
+    transition: 0.35s;
+}
+
+
+.glass-card:hover {
+
+    transform: translateY(-4px);
+
+    border-color: rgba(102,246,197,0.25);
+
+    background: rgba(255,255,255,0.06);
+}
+
+
+.glass-card p {
+
+    font-size: 8px;
+
+    color: var(--muted);
+
+    letter-spacing: 2px;
+}
+
+
+.glass-card strong {
+
+    display: block;
+
+    margin-top: 12px;
+
+    font-size: 30px;
+
+    font-weight: 400;
+}
+
+
+.glass-card span {
+
+    display: block;
+
+    margin-top: 6px;
+
+    color: var(--muted);
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   MONITOR GRID
+   ========================================================= */
+
+.monitor-grid {
+
+    display: grid;
+
+    grid-template-columns: 1.5fr 1fr;
+
+    gap: 15px;
+
+    margin-top: 15px;
+}
+
+
+.glass-panel {
+
+    min-height: 330px;
+
+    padding: 22px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 20px;
+
+    background: var(--panel);
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
+}
+
+
+.panel-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+
+.panel-header h3 {
+
+    font-size: 16px;
+
+    font-weight: 400;
+}
+
+
+.live-indicator {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    color: var(--accent);
+}
+
+
+.live-indicator span {
+
+    width: 5px;
+
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: var(--accent);
+
+    box-shadow: 0 0 8px var(--accent);
+
+    animation: blink 1.2s infinite;
+}
+
+
+@keyframes blink {
+
+    50% {
+        opacity: 0.2;
+    }
+
+}
+
+
+/* =========================================================
+   CAMERA
+   ========================================================= */
+
+.camera-placeholder {
+
+    position: relative;
+
+    height: 235px;
+
+    margin-top: 20px;
+
+    border-radius: 13px;
+
+    border: 1px solid rgba(255,255,255,0.06);
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(102,246,197,0.04),
+            transparent 45%
+        ),
+        #030405;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.camera-center {
+
+    text-align: center;
+
+    color: var(--muted);
+}
+
+
+.camera-icon {
+
+    font-size: 35px;
+
+    color: var(--accent);
+
+    opacity: 0.7;
+
+}
+
+
+.camera-center p {
+
+    margin-top: 12px;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+}
+
+
+.camera-center small {
+
+    display: block;
+
+    margin-top: 8px;
+
+    font-size: 7px;
+
+    letter-spacing: 1px;
+
+    color: #555b64;
+}
+
+
+.scan-line {
+
+    position: absolute;
+
+    left: 0;
+
+    right: 0;
+
+    height: 1px;
+
+    background: var(--accent);
+
+    opacity: 0.25;
+
+    box-shadow: 0 0 10px var(--accent);
+
+    animation: scan 4s linear infinite;
+}
+
+
+@keyframes scan {
+
+    from {
+        top: 0;
+    }
+
+    to {
+        top: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   XYRO PANEL
+   ========================================================= */
+
+.xyro-status {
+
+    font-size: 8px;
+
+    color: var(--muted);
+
+    letter-spacing: 2px;
+}
+
+
+.xyro-main {
+
+    height: 250px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.xyro-big-orb {
+
+    width: 100px;
+
+    height: 100px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(102,246,197,0.35),
+            rgba(102,246,197,0.04) 50%,
+            transparent 70%
+        );
+
+    animation: xyroPulse 3s infinite;
+}
+
+
+.xyro-big-orb div {
+
+    width: 35px;
+
+    height: 35px;
+
+    border-radius: 50%;
+
+    background: var(--accent);
+
+    filter: blur(1px);
+
+    box-shadow:
+        0 0 20px var(--accent),
+        0 0 50px rgba(102,246,197,0.5);
+}
+
+
+@keyframes xyroPulse {
+
+    50% {
+        transform: scale(1.08);
+    }
+
+}
+
+
+.xyro-message {
+
+    margin-top: 25px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .sidebar {
+        width: 210px;
+    }
+
+    .main {
+        padding: 25px;
+    }
+
+    .metrics {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .monitor-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .sidebar {
+        display: none;
+    }
+
+    .main {
+        padding: 20px;
+    }
+
+    .hero {
+        padding: 25px;
+    }
+
+    .hero-orb {
+        opacity: 0.3;
+        right: -30px;
+    }
+
+    .metrics {
+        grid-template-columns: 1fr;
+    }
+
+}
+```
+```css
+/* =========================================================
+   CINEMATIC GREETING + AMBIENT ATMOSPHERE
+   ========================================================= */
+
+#intro {
+    overflow: hidden;
+}
+
+
+/* -------------------------
+   AMBIENT LIGHT
+   ------------------------- */
+
+.ambient {
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    border-radius: 50%;
+
+    filter: blur(110px);
+
+    pointer-events: none;
+
+    opacity: 0.22;
+}
+
+
+.ambient-one {
+    top: -180px;
+    left: -120px;
+
+    background: rgba(102, 246, 197, 0.45);
+
+    animation: ambientFloatOne 9s ease-in-out infinite alternate;
+}
+
+
+.ambient-two {
+    right: -160px;
+    bottom: -180px;
+
+    background: rgba(70, 110, 255, 0.28);
+
+    animation: ambientFloatTwo 12s ease-in-out infinite alternate;
+}
+
+
+.ambient-three {
+    left: 45%;
+    top: 40%;
+
+    width: 300px;
+    height: 300px;
+
+    background: rgba(102, 246, 197, 0.12);
+
+    animation: ambientFloatThree 10s ease-in-out infinite alternate;
+}
+
+
+@keyframes ambientFloatOne {
+
+    from {
+        transform: translate(0, 0) scale(0.85);
+    }
+
+    to {
+        transform: translate(130px, 100px) scale(1.15);
+    }
+
+}
+
+
+@keyframes ambientFloatTwo {
+
+    from {
+        transform: translate(0, 0) scale(1);
+    }
+
+    to {
+        transform: translate(-100px, -80px) scale(1.2);
+    }
+
+}
+
+
+@keyframes ambientFloatThree {
+
+    from {
+        transform: translate(-50px, -30px) scale(0.8);
+        opacity: 0.15;
+    }
+
+    to {
+        transform: translate(50px, 30px) scale(1.2);
+        opacity: 0.35;
+    }
+
+}
+
+
+/* -------------------------
+   GREETING SCREEN
+   ------------------------- */
+
+.greeting-screen {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 5;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    animation: greetingSequence 2.8s ease forwards;
+
+}
+
+
+.namaste-glow {
+    width: 170px;
+    height: 170px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 22px;
+
+    position: relative;
+
+    animation:
+        namasteAppear 1.2s ease forwards,
+        namasteBreath 2.5s ease-in-out 1.2s infinite alternate;
+}
+
+
+/* Soft cinematic halo behind the greeting */
+
+.namaste-glow::before {
+    content: "";
+
+    position: absolute;
+
+    width: 145px;
+    height: 145px;
+
+    border-radius: 50%;
+
+    background: rgba(102, 246, 197, 0.12);
+
+    filter: blur(45px);
+
+    animation: greetingAura 3s ease-in-out infinite alternate;
+}
+
+
+/* The actual character */
+
+.namaste-glow img {
+    position: relative;
+
+    width: 155px;
+    height: 155px;
+
+    object-fit: contain;
+
+    z-index: 2;
+
+    filter:
+        drop-shadow(0 0 8px rgba(102, 246, 197, 0.18))
+        drop-shadow(0 0 25px rgba(102, 246, 197, 0.12));
+
+    animation: greetingImageFloat 3s ease-in-out infinite alternate;
+}
+
+
+@keyframes greetingAura {
+
+    from {
+        transform: scale(0.8);
+        opacity: 0.45;
+    }
+
+    to {
+        transform: scale(1.2);
+        opacity: 0.9;
+    }
+
+}
+
+
+@keyframes greetingImageFloat {
+
+    from {
+        transform: translateY(3px);
+    }
+
+    to {
+        transform: translateY(-5px);
+    }
+
+}
+
+
+@keyframes namasteAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(0.65) translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+
+}
+
+
+@keyframes namasteBreath {
+
+    from {
+        filter:
+            drop-shadow(0 0 8px rgba(102,246,197,0.25));
+    }
+
+    to {
+        filter:
+            drop-shadow(0 0 22px rgba(102,246,197,0.55))
+            drop-shadow(0 0 50px rgba(102,246,197,0.2));
+    }
+
+}
+
+
+.greeting-title {
+
+    font-size: 11px;
+
+    letter-spacing: 7px;
+
+    color: #f1f3f5;
+
+    margin-left: 7px;
+
+}
+
+
+.greeting-subtitle {
+
+    margin-top: 13px;
+
+    font-size: 8px;
+
+    letter-spacing: 4px;
+
+    color: #737983;
+
+}
+
+
+/*
+   Greeting disappears before the main
+   Crowd Vision intro takes over.
+*/
+
+@keyframes greetingSequence {
+
+    0% {
+        opacity: 0;
+    }
+
+    12% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+}
+
+
+/* -------------------------
+   EXISTING INTRO CONTENT
+   ------------------------- */
+
+#intro .intro-content {
+
+    opacity: 0;
+
+    animation:
+        mainIntroAppear 1.3s ease 2.2s forwards;
+
+}
+
+
+@keyframes mainIntroAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+
+/* -------------------------
+   EXTRA GLASS AMBIENT GLOW
+   ------------------------- */
+
+.glass-card,
+.glass-panel,
+.hero {
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+.glass-card::before,
+.glass-panel::before,
+.hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    top: -100px;
+    left: -80px;
+
+    border-radius: 50%;
+
+    background: rgba(102,246,197,0.07);
+
+    filter: blur(45px);
+
+    pointer-events: none;
+
+    animation: panelAmbient 7s ease-in-out infinite alternate;
+}
+
+
+@keyframes panelAmbient {
+
+    from {
+        transform: translate(0, 0);
+    }
+
+    to {
+        transform: translate(120px, 80px);
+    }
+
+}
+
+
+/* -------------------------
+   XYRO AMBIENT ATMOSPHERE
+   ------------------------- */
+
+.xyro-panel {
+
+    box-shadow:
+        inset 0 0 60px rgba(102,246,197,0.025);
+}
+
+
+.xyro-panel .xyro-big-orb {
+
+    box-shadow:
+        0 0 35px rgba(102,246,197,0.12),
+        0 0 100px rgba(102,246,197,0.06);
+}
+
+
+/* -------------------------
+   CINEMATIC VIGNETTE
+   ------------------------- */
+
+#intro::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 35%,
+            rgba(0,0,0,0.45) 100%
+        );
+
+}
+```
